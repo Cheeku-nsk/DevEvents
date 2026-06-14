@@ -13,7 +13,7 @@ cacheLife('hours')
 
   return (
     <section>
-      <h1 className="text-center">The Hub for Every Dev <br /> Event You Can't Miss</h1>
+      <h1 className="text-center text-5xl">The Hub for Every Dev <br /> Event You Can't Miss</h1>
       <p className="text-center mt-5">Hackethons, Meetups, and Conferences, All in one Place </p>
       <ExploreBtn/>
       <div className="mt-20 space-y-4">
