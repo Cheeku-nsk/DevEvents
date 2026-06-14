@@ -34,9 +34,6 @@ if (typeof window !== 'undefined') {
 export default function PostHogProvider({ children }: { children: React.ReactNode }) {
   return (
     <PHProvider client={posthog}>
-      <Suspense fallback={null}>
-        <PostHogPageView />
-      </Suspense>
       {children}
     </PHProvider>
   )
