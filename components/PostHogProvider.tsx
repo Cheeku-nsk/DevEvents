@@ -1,43 +1,45 @@
 'use client'
 
-import posthog from 'posthog-js'
-import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useEffect, Suspense } from 'react'
-
-function PostHogPageView() {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-  const ph = usePostHog()
-
-  useEffect(() => {
-    if (pathname && ph) {
-      let url = window.origin + pathname
-      const search = searchParams.toString()
-      if (search) url += '?' + search
-      ph.capture('$pageview', { $current_url: url })
-    }
-  }, [pathname, searchParams, ph])
-
-  return null
-}
-
-if (typeof window !== 'undefined') {
-  posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
-    api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    person_profiles: 'identified_only',
-    capture_pageview: false,
-    capture_pageleave: true,
-  })
-}
+import { useEffect } from 'react'
 
 export default function PostHogProvider({ children }: { children: React.ReactNode }) {
-  return (
-    <PHProvider client={posthog}>
-      <Suspense fallback={null}>
-        <PostHogPageView />
-      </Suspense>
-      {children}
-    </PHProvider>
-  )
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (!pathname) return
+
+    let mounted = true
+
+    ;(async () => {
+      try {
+        const posthogModule = await import('posthog-js')
+        const posthog = posthogModule?.default ?? posthogModule
+
+        if (!mounted) return
+
+        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY ?? '', {
+          api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+          person_profiles: 'identified_only',
+          capture_pageview: false,
+          capture_pageleave: true,
+        })
+
+        let url = window.origin + pathname
+        const search = searchParams.toString()
+        if (search) url += '?' + search
+        posthog.capture('$pageview', { $current_url: url })
+      } catch (err) {
+        // ignore client-side telemetry failures
+        // console.debug('PostHog init failed', err)
+      }
+    })()
+
+    return () => {
+      mounted = false
+    }
+  }, [pathname, searchParams])
+
+  return <>{children}</>
 }
