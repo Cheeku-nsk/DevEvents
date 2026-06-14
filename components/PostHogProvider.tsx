@@ -1,15 +1,9 @@
 'use client'
 
-import { usePathname, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 export default function PostHogProvider({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname()
-  const searchParams = useSearchParams()
-
   useEffect(() => {
-    if (!pathname) return
-
     let mounted = true
 
     ;(async () => {
@@ -26,20 +20,18 @@ export default function PostHogProvider({ children }: { children: React.ReactNod
           capture_pageleave: true,
         })
 
-        let url = window.origin + pathname
-        const search = searchParams.toString()
-        if (search) url += '?' + search
+        // Read location after mount to avoid accessing request-scoped data during prerender
+        const url = window.location.href
         posthog.capture('$pageview', { $current_url: url })
       } catch (err) {
         // ignore client-side telemetry failures
-        // console.debug('PostHog init failed', err)
       }
     })()
 
     return () => {
       mounted = false
     }
-  }, [pathname, searchParams])
+  }, [])
 
   return <>{children}</>
 }
