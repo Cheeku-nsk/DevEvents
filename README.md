@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 DevEvents
 
-## Getting Started
+A modern **Next.js 16** platform to discover and explore **Hackathons, Meetups, Conferences, Workshops, and Tech Events**—all in one place. Find your next opportunity, stay updated with upcoming developer events, and never miss an exciting tech gathering.
 
-First, run the development server:
+🌐 **Live Demo:** https://dev-events-pied-three.vercel.app/
+
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwind-css)
+
+---
+
+## ✨ Features
+
+- 🎯 Discover hackathons, meetups, conferences, workshops, and developer events in one place.
+- 🔍 Explore event details, including date, time, and location.
+- ⚡ Built with **Next.js 16 App Router** for high performance.
+- 🎨 Modern, clean, and responsive UI powered by **Tailwind CSS**.
+- 📱 Optimized for desktop, tablet, and mobile devices.
+- 🧩 Reusable and scalable component architecture.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 16**
+- **React 19**
+- **TypeScript**
+- **Tailwind CSS**
+- **ESLint**
+- **npm**
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v20 or later)
+- npm
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/Cheeku-nsk/DevEvents.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd DevEvents
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 📸 Live Preview
 
-To learn more about Next.js, take a look at the following resources:
+🌐 **https://dev-events-pied-three.vercel.app/**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 👨‍💻 Author
 
-## Deploy on Vercel
+**Koushik**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+⭐ If you found this project useful, consider starring the repository!`
